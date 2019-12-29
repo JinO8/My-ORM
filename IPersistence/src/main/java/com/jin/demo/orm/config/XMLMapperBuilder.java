@@ -24,7 +24,7 @@ public class XMLMapperBuilder {
         Document document = new SAXReader().read(resourceAsSteam);
         Element rootElement = document.getRootElement();
         String namespace = rootElement.attributeValue("namespace");
-        List<Element> selectElement = rootElement.selectNodes("//select");
+        List<Element> selectElement = rootElement.selectNodes("//select|//insert|//update|//delete");
         selectElement.forEach(element -> {
             String id = element.attributeValue("id");
             String paramterType = element.attributeValue("paramterType");
