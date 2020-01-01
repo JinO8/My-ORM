@@ -1,6 +1,6 @@
 <configuration>
     <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
-    <property name="jdbcUrl" value="jdbc:mysql:///test?characterEncoding=UTF-8&amp;useSSL=true&amp;serverTimezone=CTT&amp;autoReconnect=true&amp;failOverReadOnly=false"></property>
+    <property name="jdbcUrl" value="jdbc:mysql:///test?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;autoReconnect=true&amp;failOverReadOnly=false"></property>
     <property name="user" value="root"></property>
     <property name="password" value="root"></property>
     <mapper resource="UserMapper.xml"></mapper>

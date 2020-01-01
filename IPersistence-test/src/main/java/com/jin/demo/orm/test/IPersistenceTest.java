@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author wangjin
@@ -26,15 +27,17 @@ public class IPersistenceTest {
     @Test
     public void test() throws Exception {
         User user = new User();
-        user.setId(1);
-        User o = sqlSession.selectOne("user.selectOne", user);
-        System.out.println(o);
+        user.setId(2);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> o = mapper.selectList(user);
+        o.forEach(System.out::println);
 
     }
     @Test
     public void test1() throws Exception {
         User user = new User();
-        user.setId(1);
+        user.setId(2);
+        user.setUsername("jack");
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         int insert = mapper.insert(user);
         System.out.println(insert);
@@ -43,8 +46,8 @@ public class IPersistenceTest {
     @Test
     public void test2() throws Exception {
         User user = new User();
-        user.setId(1);
-        user.setUsername("haha");
+        user.setId(2);
+        user.setUsername("tom");
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         int update = mapper.update(user);
         System.out.println(update);

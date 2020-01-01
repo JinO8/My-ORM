@@ -1,4 +1,4 @@
-<mapper namespace="user">
+<mapper namespace="com.jin.demo.orm.test.UserMapper">
     <select id="selectOne" paramterType="com.jin.demo.orm.test.User" resultType="com.jin.demo.orm.test.User">
         select * from user where id = #{id} and username = #{username}
     </select>

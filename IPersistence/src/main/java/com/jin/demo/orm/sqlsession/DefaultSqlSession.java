@@ -66,10 +66,12 @@ public class DefaultSqlSession implements SqlSession {
                 String className = method.getDeclaringClass().getName();
                 // 方法名+类名全路径组成statementId
                 String key = className+"."+methodName;
+                //优化，通过sql判断
+                String sql = configuration.getMappedStatementMap().get(key).getSql();
                 /*
                  *简单实现：通过判断方法名来实现
                  */
-                if (methodName.startsWith("select")){
+                if (sql.startsWith("select")){
                     // 基于java内省判断
                     Type genericReturnType = method.getGenericReturnType();
                     // 如果返回值有泛型，查多个
@@ -78,9 +80,9 @@ public class DefaultSqlSession implements SqlSession {
                     }
                     // 否则查单个
                     return selectOne(key,args);
-                }else if (methodName.startsWith("insert")){
+                }else if (sql.startsWith("insert")){
                     return insert(key,args);
-                }else if (methodName.startsWith("update")){
+                }else if (sql.startsWith("update")){
                     return update(key,args);
                 }else {
                     return delete(key,args);
